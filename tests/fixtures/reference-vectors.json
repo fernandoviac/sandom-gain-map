@@ -1,0 +1,55 @@
+{
+  "recordVersion": 1,
+  "calculationColorEncoding": "linear-rec2020-d65-reference-white-203-cd-m2",
+  "defaults": {
+    "mapGamma": [1, 1, 1],
+    "baseOffset": [0.015625, 0.015625, 0.015625],
+    "alternateOffset": [0.015625, 0.015625, 0.015625],
+    "minimumDisplayHeadroom": 0,
+    "maximumDisplayBoost": 4
+  },
+  "pixels": [
+    {
+      "name": "black",
+      "baseLinearRec2020": [0, 0, 0],
+      "alternateLinearRec2020": [0, 0, 0]
+    },
+    {
+      "name": "near-black-channel-separation",
+      "baseLinearRec2020": [0.000244140625, 0.00048828125, 0.0009765625],
+      "alternateLinearRec2020": [0.0009765625, 0.001953125, 0.00390625]
+    },
+    {
+      "name": "reference-white",
+      "baseLinearRec2020": [1, 1, 1],
+      "alternateLinearRec2020": [1, 1, 1]
+    },
+    {
+      "name": "saturated-red-highlight",
+      "baseLinearRec2020": [0.8, 0.05, 0.05],
+      "alternateLinearRec2020": [4, 0.08, 0.06]
+    },
+    {
+      "name": "saturated-green-highlight",
+      "baseLinearRec2020": [0.05, 0.8, 0.05],
+      "alternateLinearRec2020": [0.08, 4, 0.06]
+    },
+    {
+      "name": "saturated-blue-highlight",
+      "baseLinearRec2020": [0.05, 0.05, 0.8],
+      "alternateLinearRec2020": [0.08, 0.06, 4]
+    }
+  ],
+  "gainMapScales": [1, 2, 4],
+  "displayBoostStates": [1, 1, 2, 4, 8],
+  "acceptanceLimits": {
+    "floatingPointMapMaximumAbsoluteChannelError": 0.00001,
+    "eightBitMapMaximumAbsoluteChannelError": 0.025,
+    "reducedMapMaximumAbsoluteChannelError": 0.05,
+    "dualJpegMaximumAbsoluteChannelError": 0.15,
+    "dualJpegMeanAbsoluteChannelError": 0.035,
+    "dualJpegRootMeanSquareChannelError": 0.05,
+    "dualJpegMeanRelativeLuminanceError": 0.08,
+    "channelOrderErrorCount": 0
+  }
+}

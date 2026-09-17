@@ -1,0 +1,58 @@
+{
+  "recordVersion": 1,
+  "externalSourceRevision": {
+    "libultrahdr": "418b6b361e252a91c435a56cf386afb37d7d1c9d",
+    "awesomeGainMaps": "c27f20d68f6fdd260d650227da2fcb14667ef7e1",
+    "ultrahdrRust": "2495e8c7f7e0b50bc0605bbeb74aa513c3d48874"
+  },
+  "fixtures": [
+    {
+      "file": "iso-reference.jpg",
+      "sha256": "acf2da128862d69e29cebe04c0550f68270193e06b85b97fc7deb8d40524d26e",
+      "source": "https://gregbenzphotography.com/assets/hdr/tests/gainMapTestISO.jpg",
+      "sourceVersion": "downloaded 2026-08-26 from the maintained ISO JPEG display test",
+      "license": "Copyright Greg Benz; retained only as an interoperability test fixture",
+      "expectedInterpretation": "ISO 21496-1-only JPEG with one scalar auxiliary gain map"
+    },
+    {
+      "file": "ultra-hdr-reference.jpg",
+      "sha256": "cd18a9c6ab4b3ace8f2a4fd8969b2e96a16da61eba3e8a14ab6f20cf4019bd26",
+      "source": "Awesome Gain Maps revision c27f20d68f6fdd260d650227da2fcb14667ef7e1, images/gain_mapped-test_chart-squares_b4_gm2.jpg",
+      "sourceVersion": "revision c27f20d68f6fdd260d650227da2fcb14667ef7e1",
+      "license": "MIT repository license; source image attribution remains with the corpus owner",
+      "expectedInterpretation": "Ultra HDR version 1-only JPEG with one scalar auxiliary gain map"
+    },
+    {
+      "file": "rust-reference.jpg",
+      "sha256": "adcaf2814faad78ee9030dd99af3e2acf7ceb236451a14d54964d1a5d4fb36a4",
+      "source": "ultrahdr-rs revision 2495e8c7f7e0b50bc0605bbeb74aa513c3d48874, test_ultrahdr.jpg",
+      "sourceVersion": "revision 2495e8c7f7e0b50bc0605bbeb74aa513c3d48874",
+      "license": "Apache-2.0",
+      "expectedInterpretation": "Ultra HDR version 1-only JPEG produced by the independent Rust implementation"
+    },
+    {
+      "file": "apple-gain-map-new.jpg",
+      "sha256": "492a94bd0636bcf15b3f560c68142a7783936c1597e78b0d0461d8be7fddc078",
+      "source": "libultrahdr revision 418b6b361e252a91c435a56cf386afb37d7d1c9d, tests/data/apple_gainmap_new.jpg",
+      "sourceVersion": "revision 418b6b361e252a91c435a56cf386afb37d7d1c9d",
+      "license": "libultrahdr tests/data license",
+      "expectedInterpretation": "legacy Apple multi-picture gain-map JPEG; not an ISO or Ultra HDR profile"
+    },
+    {
+      "file": "apple-gain-map-old.jpg",
+      "sha256": "2e4310a0dd37a98678e057e25d936bbc4f936bb6fe17380c0ce99e58ecaa603b",
+      "source": "libultrahdr revision 418b6b361e252a91c435a56cf386afb37d7d1c9d, tests/data/apple_gainmap_old.jpg",
+      "sourceVersion": "revision 418b6b361e252a91c435a56cf386afb37d7d1c9d",
+      "license": "libultrahdr tests/data license",
+      "expectedInterpretation": "legacy Apple multi-picture gain-map JPEG; Sandom must not misclassify it as ISO or Ultra HDR"
+    },
+    {
+      "file": "ordinary-mpf.jpg",
+      "sha256": "a016a38bbd6480fff19273e25a69ed5382b596e9b402336bbbbca0b12cd8dd05",
+      "source": "libultrahdr revision 418b6b361e252a91c435a56cf386afb37d7d1c9d, tests/data/jpeg_image.jpg",
+      "sourceVersion": "revision 418b6b361e252a91c435a56cf386afb37d7d1c9d",
+      "license": "libultrahdr tests/data license",
+      "expectedInterpretation": "ordinary JPEG without adaptive metadata"
+    }
+  ]
+}

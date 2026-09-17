@@ -1,0 +1,22 @@
+{
+  "kind": "sandom/gain-map-malformed-corpus",
+  "version": 1,
+  "iso": [
+    { "name": "empty", "hex": "", "error": 14 },
+    { "name": "unsupported-minimum-version", "hex": "0001000000", "error": 12 },
+    { "name": "unknown-reserved-flag", "hex": "0000000001", "error": 13 },
+    { "name": "backward-direction", "hex": "0000000004", "error": 25 },
+    {
+      "name": "common-denominator-zero",
+      "hex": "000000000800000000",
+      "error": 15
+    }
+  ],
+  "jpeg": [
+    { "name": "empty", "hex": "", "error": 17 },
+    { "name": "only-soi", "hex": "ffd8", "error": 14 },
+    { "name": "stuffed-zero-outside-scan", "hex": "ffd8ff00ffd9", "error": 17 },
+    { "name": "segment-length-one", "hex": "ffd8ffe10001ffd9", "error": 17 },
+    { "name": "truncated-segment", "hex": "ffd8ffe10010", "error": 14 }
+  ]
+}

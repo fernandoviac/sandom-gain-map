@@ -1,0 +1,35 @@
+{
+  "name": "@sandom/gain-map",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Adaptive HDR gain-map computation, metadata, inspection, and package assembly in WebAssembly.",
+  "exports": {
+    "./gain-map.wasm": "./dist/gain-map.wasm",
+    "./gain-map.wat": "./dist/gain-map.wat",
+    "./gain-map.build.json": "./dist/gain-map.build.json",
+    "./gain-map.manifest.json": "./src/gain-map.manifest.json",
+    "./watpart/*": "./src/*.watpart"
+  },
+  "files": [
+    "dist/gain-map.wasm",
+    "dist/gain-map.wat",
+    "dist/gain-map.build.json",
+    "src/*.watpart",
+    "src/gain-map.manifest.json",
+    "docs",
+    "README.md",
+    "DESIGN.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "dependencies": {
+    "@sandom/color": "0.1.0"
+  },
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandoviac/sandom-gain-map.git"
+  }
+}
