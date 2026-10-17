@@ -1,7 +1,7 @@
 {
   "fmt": { "exclude": ["."] },
   "name": "@sandom/gain-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "exports": "./dist/gain-map.wasm",
   "tasks": {
     "build": "deno run --allow-read --allow-write tools/build-wasm.js",

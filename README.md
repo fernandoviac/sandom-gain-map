@@ -72,7 +72,7 @@ work never invokes a codec.
 
 The release profile uses an opaque f32 linear-Rec.2020 D65 render at 203 cd/m²
 reference white, an encoded-sRGB SDR JPEG base, and one f32/8-bit RGB gain map.
-`gain_map_prepare_base` composes `@sandom/color` 0.1.0 in the same module for
+`gain_map_prepare_base` composes `@sandom/color` 0.3.0 in the same module for
 the BT.2390, CSS Color 4 gamut-map, matrix, and transfer work. Generation uses
 per-channel complete-image gain extrema, positive default offsets of 1/64, gamma
 1, explicit scale 1/2/4/8, one eight-bit recovery quantization, and f64 metadata

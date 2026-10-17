@@ -26,7 +26,7 @@ scratch occupy reserved bytes below 65,536. The gain-map allocator begins at
 65,536. Neither component imports memory or calls a host per pixel.
 
 The composed color component retains the export surface and semantics frozen by
-`@sandom/color` 0.1.0: transfer functions, matrix/vector operations, tagged
+`@sandom/color` 0.3.0: transfer functions, matrix/vector operations, tagged
 conversion, Lab/OKLab, HLG/PQ, BT.2390, CSS Color 4 gamut mapping, CSS parsing,
 and matrix reads. Those functions share the same private scratch and are
 serialized with gain-map calls. Gain-map ABI versioning does not fork or retune

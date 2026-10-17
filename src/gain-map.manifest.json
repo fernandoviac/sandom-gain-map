@@ -4,15 +4,15 @@
   "module": "gain-map",
   "colorDependency": {
     "specifier": "https://cdn.urania-libs.com/set/ba4d1b20b3a0b4eb/sandom-color/",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "manifest": "src/color.manifest.json",
     "components": [
       "color-abi.watpart",
       "color-kernel.watpart"
     ],
     "sourceDigests": {
-      "color-abi.watpart": "aa5435a0c8f908df3de73f34471b87f56114da7173a9afde23a226824a2d4d3e",
-      "color-kernel.watpart": "fb6a664f18ce1963cbb8a2a44b141805955181b06e654fc4d6b3b477c9a39a5c"
+      "color-abi.watpart": "eebfc7178abffb05a7778d0fd7590ec2d37ded23a2158dedeab1ad5aad7309c8",
+      "color-kernel.watpart": "37f1f98f92dde63b8e92a1c47c2bb96fc83dc9eccbfafd00abeabb97fb00c1a3"
     }
   },
   "components": [

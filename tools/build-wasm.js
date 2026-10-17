@@ -71,7 +71,7 @@ const colorRoot = new URL(
 );
 if (!(await exists(new URL("package.json", colorRoot)))) {
   throw new Error(
-    "@sandom/color 0.1.0 is missing from the local programme import map",
+    `@sandom/color ${manifest.colorDependency.version} is missing from the local programme import map`,
   );
 }
 const colorPackage = JSON.parse(

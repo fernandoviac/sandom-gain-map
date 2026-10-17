@@ -4,7 +4,7 @@
 
 The maintained implementation is the ordered `.watpart` source named by
 `src/gain-map.manifest.json`. The build composes the exact embeddable
-`color-kernel.watpart` from `@sandom/color` 0.1.0, assembles the result in
+`color-kernel.watpart` from `@sandom/color` 0.3.0, assembles the result in
 process with the vendored `tools/wat-assembler`, compiles it with
 `WebAssembly.compile` to validate it, and records every source and artifact
 digest. No generated source logic or runtime language binding exists.
