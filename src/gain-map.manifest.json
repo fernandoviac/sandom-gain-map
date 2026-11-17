@@ -3,8 +3,8 @@
   "version": 1,
   "module": "gain-map",
   "colorDependency": {
-    "specifier": "https://cdn.urania-libs.com/set/ba4d1b20b3a0b4eb/sandom-color/",
-    "version": "0.3.0",
+    "specifier": "https://cdn.urania-libs.com/set/c99f3c88dc390b9a/sandom-color/",
+    "version": "0.5.0",
     "manifest": "src/color.manifest.json",
     "components": [
       "color-abi.watpart",
@@ -12,7 +12,7 @@
     ],
     "sourceDigests": {
       "color-abi.watpart": "eebfc7178abffb05a7778d0fd7590ec2d37ded23a2158dedeab1ad5aad7309c8",
-      "color-kernel.watpart": "37f1f98f92dde63b8e92a1c47c2bb96fc83dc9eccbfafd00abeabb97fb00c1a3"
+      "color-kernel.watpart": "62657791c86a29d9ec1599d8d88a05bd36361024b754b1fc345ce91f410f8bf4"
     }
   },
   "components": [

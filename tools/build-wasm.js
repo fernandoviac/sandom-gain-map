@@ -49,14 +49,14 @@ if (
   manifest?.kind !== "sandom/webassembly-source-manifest" ||
   manifest.version !== 1 || manifest.module !== "gain-map" ||
   manifest.colorDependency?.specifier !==
-    "https://cdn.urania-libs.com/set/ba4d1b20b3a0b4eb/sandom-color/" ||
+    "https://cdn.urania-libs.com/set/c99f3c88dc390b9a/sandom-color/" ||
   !Array.isArray(manifest.components) || manifest.components.length < 3
 ) {
   throw new Error("Invalid gain-map WebAssembly source manifest");
 }
 
 const importMap = JSON.parse(await Deno.readTextFile(importMapUrl));
-const libraryPrefix = "https://cdn.urania-libs.com/set/ba4d1b20b3a0b4eb/";
+const libraryPrefix = "https://cdn.urania-libs.com/set/c99f3c88dc390b9a/";
 const localLibraryRoot = importMap?.imports?.[libraryPrefix];
 if (typeof localLibraryRoot !== "string") {
   throw new Error("import-map.json must map the programme library prefix");

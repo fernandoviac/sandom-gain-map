@@ -31,6 +31,43 @@
   (func (export "gain_map_error_field") (result i32) (global.get $gain_field))
   (func (export "gain_map_required_size") (result i32) (global.get $gain_required))
 
+  ;; The text of each error code, zero-terminated, by code from 0
+  ;; (success); "unknown error" after the last code.
+  (data (i32.const 20000)
+    "success\00" "not initialized\00" "memory span\00" "alignment\00" "dimensions\00" "layout\00"
+    "sample type\00" "numeric value\00" "record\00" "capacity\00" "allocation\00" "stale allocation\00"
+    "ISO version\00" "ISO flags\00" "truncated input\00" "rational\00" "XMP\00"
+    "JPEG APP segment or entropy structure is invalid\00" "MPF entry offset or length is invalid\00"
+    "adaptive profile\00" "ISO 21496-1 and Ultra HDR metadata contradict each other\00" "JPEG codec\00"
+    "integer overflow\00" "trailing bytes\00" "duplicate metadata\00" "unsupported feature\00"
+    "unknown error\00")
+  (global $gain_error_text_length (mut i32) (i32.const 0))
+
+  ;; The address of the text of error $code; its byte length is
+  ;; gain_map_error_text_length().
+  (func (export "gain_map_error_text") (param $code i32) (result i32)
+    (local $at i32) (local $index i32) (local $start i32)
+    (if (i32.gt_u (local.get $code) (global.get $GAIN_ERROR_UNSUPPORTED))
+      (then (local.set $code (i32.add (global.get $GAIN_ERROR_UNSUPPORTED) (i32.const 1)))))
+    (local.set $at (i32.const 20000))
+    (block $found (loop $texts
+      (br_if $found (i32.eq (local.get $index) (local.get $code)))
+      (block $end (loop $bytes
+        (br_if $end (i32.eqz (i32.load8_u (local.get $at))))
+        (local.set $at (i32.add (local.get $at) (i32.const 1)))
+        (br $bytes)))
+      (local.set $at (i32.add (local.get $at) (i32.const 1)))
+      (local.set $index (i32.add (local.get $index) (i32.const 1)))
+      (br $texts)))
+    (local.set $start (local.get $at))
+    (block $end (loop $bytes
+      (br_if $end (i32.eqz (i32.load8_u (local.get $at))))
+      (local.set $at (i32.add (local.get $at) (i32.const 1)))
+      (br $bytes)))
+    (global.set $gain_error_text_length (i32.sub (local.get $at) (local.get $start)))
+    (local.get $start))
+  (func (export "gain_map_error_text_length") (result i32) (global.get $gain_error_text_length))
+
   ;; ImageDescriptor, 32 bytes: data pointer/length, dimensions, row stride,
   ;; sample type, channel layout, flags. Samples: 0=u8,1=u16,2=f32.
   ;; Layouts: 0=RGB,1=RGBA. Flags bit0=encoded sRGB, bit1=opaque.
@@ -52,7 +89,8 @@
   (global (export "gain_map_image_flag_opaque") i32 (i32.const 2))
 
   ;; Metadata, 152 bytes. Five three-channel f64 arrays occupy 0..119;
-  ;; headroom f64s are at 120/128; flags/profile/channel count at 136..147.
+  ;; headroom f64s are at 120/128; flags/profile/channel count/ISO writer
+  ;; version at 136..151.
   (global (export "gain_map_metadata_size") i32 (i32.const 152))
   (global (export "gain_map_metadata_min_offset") i32 (i32.const 0))
   (global (export "gain_map_metadata_max_offset") i32 (i32.const 24))
@@ -64,6 +102,7 @@
   (global (export "gain_map_metadata_flags_offset") i32 (i32.const 136))
   (global (export "gain_map_metadata_profile_offset") i32 (i32.const 140))
   (global (export "gain_map_metadata_channel_count_offset") i32 (i32.const 144))
+  (global (export "gain_map_metadata_writer_version_offset") i32 (i32.const 148))
   (global (export "gain_map_metadata_flag_base_color_space") i32 (i32.const 1))
   (global (export "gain_map_profile_generated") i32 (i32.const 0))
   (global (export "gain_map_profile_iso") i32 (i32.const 1))
@@ -129,8 +168,16 @@
     (i64.store offset=8 (local.get $result) (i64.const 0))
     (i32.const 0))
 
-  ;; MPF entry and adaptive inspection records.
+  ;; MPF entry and adaptive inspection records. An MPF entry holds its
+  ;; attributes, byte length, data offset and absolute offset.
   (global (export "gain_map_mpf_entry_size") i32 (i32.const 16))
+  (global (export "gain_map_mpf_entry_attributes_offset") i32 (i32.const 0))
+  (global (export "gain_map_mpf_entry_byte_length_offset") i32 (i32.const 4))
+  (global (export "gain_map_mpf_entry_data_offset_offset") i32 (i32.const 8))
+  (global (export "gain_map_mpf_entry_absolute_offset_offset") i32 (i32.const 12))
+  ;; The metadata presence bits of gain_map_inspect_profiles.
+  (global (export "gain_map_metadata_presence_iso") i32 (i32.const 1))
+  (global (export "gain_map_metadata_presence_ultra_hdr") i32 (i32.const 2))
   (global (export "gain_map_inspection_size") i32 (i32.const 64))
   (global (export "gain_map_inspection_is_gain_map_offset") i32 (i32.const 0))
   (global (export "gain_map_inspection_compatibility_offset") i32 (i32.const 4))

@@ -230,11 +230,24 @@ gain_map_result_release(result16) -> status
 gain_map_error_code() -> error
 gain_map_error_field() -> operation-specific detail
 gain_map_required_size() -> bytes
+gain_map_error_text(error) -> pointer
+gain_map_error_text_length() -> bytes
+gain_map_map_extent(extent, scale) -> extent-or-zero
+gain_map_quantize_rgba8(srcF32, count, channels, dstRgba8) -> status
+gain_map_dequantize_rgb(srcRgba8, count, dstF32) -> status
 ```
 
 `gain_map_init` is idempotent and is required before semantic operations.
 Allocation pointers are eight-byte aligned. The optional memory limit applies to
-future growth and is bounded to 256 MiB.
+future growth and is bounded to 256 MiB. `gain_map_error_text` gives the UTF-8
+text of an error code ("unknown error" for a code outside the table), and
+`gain_map_error_text_length` its byte length. `gain_map_map_extent` gives the
+gain map's width or height for an image extent: the extent divided by the scale
+(1, 2, 4 or 8), rounded up; 0 for another scale. `gain_map_quantize_rgba8`
+makes the eight-bit codestream input of `count` tightly packed f32 pixels of 3
+or 4 channels: each color channel clamped to 0..1, times 255 and rounded half
+up (NaN is 0), alpha 255. `gain_map_dequantize_rgb` turns `count` decoded RGBA8
+pixels into tightly packed f32 RGB, each channel divided by 255.
 
 ```text
 gain_map_prepare_base(alternate, sourcePeakF64, output) -> status

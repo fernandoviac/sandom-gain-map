@@ -14,7 +14,7 @@ The build wraps these parts, unchanged and in order, in one `(module ...)`. It
 does not generate WAT, rewrite symbols, or infer an embeddable component list.
 The manifest composes the exact maintained `color-kernel.watpart`; it does not
 copy a per-pixel implementation. The build resolves
-`https://cdn.urania-libs.com/set/ba4d1b20b3a0b4eb/sandom-color/` through the repository
+`https://cdn.urania-libs.com/set/c99f3c88dc390b9a/sandom-color/` through the repository
 `import-map.json`. It verifies the color version, embeddable manifest fields,
 the single color kernel component, its 9,728-byte scratch extent, required
 `memory`/`$COLOR_BASE` symbols, and pinned source SHA-256
@@ -26,7 +26,7 @@ scratch occupy reserved bytes below 65,536. The gain-map allocator begins at
 65,536. Neither component imports memory or calls a host per pixel.
 
 The composed color component retains the export surface and semantics frozen by
-`@sandom/color` 0.3.0: transfer functions, matrix/vector operations, tagged
+`@sandom/color` 0.5.0: transfer functions, matrix/vector operations, tagged
 conversion, Lab/OKLab, HLG/PQ, BT.2390, CSS Color 4 gamut mapping, CSS parsing,
 and matrix reads. Those functions share the same private scratch and are
 serialized with gain-map calls. Gain-map ABI versioning does not fork or retune
